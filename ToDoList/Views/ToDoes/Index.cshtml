@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ToDoList.Models.ToDo>
+
+@{
+    ViewBag.Title = "Lista zadań do zrobienia";
+}
+<br />
+
+
+<center>  <img src="~/images/todopng.png" height="500" /></center>
+<br />
+<br />
+
+@Html.ActionLink("Dodaj do listy", "Create", null, new { @class = "btn btn-lg add myactionlink" })
+
+
+<br />
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Twoje zadania do Wykonania:
+        </th>
+        <th></th>
+
+    </tr>
+  
+    @{
+        int i = 0;
+        foreach (var item in Model)
+        {
+            if (!item.IsDone)
+            {
+                if (i % 2 == 0)
+                {
+                    <tr class="trrow">
+                        <td>
+                            <span class="description">@Html.DisplayFor(modelItem => item.Description)</span>
+                        </td>
+
+                        <td class="tdright">
+                            @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn myactionlink btn-md edit" })
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { @class = "btn myactionlink btn-md delete" })
+                            @Html.ActionLink("Wykonane", "Done", new { id = item.Id }, new { @class = "btn myactionlink btn-md done" })
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr class="secondrow trrow">
+                        <td>
+                            <span class="description">@Html.DisplayFor(modelItem => item.Description)</span>
+                        </td>
+
+                        <td class="tdright">
+                            @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = " btn myactionlink btn-md edit" })
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { @class = "btn myactionlink btn-md delete" })
+                            @Html.ActionLink("Wykonane", "Done", new { id = item.Id }, new { @class = "btn myactionlink btn-md done" })
+                            </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                if (i % 2 == 0)
+                {
+                    <tr class="trrow">
+                        <td>
+                            <span class="description cross">@Html.DisplayFor(modelItem => item.Description)</span>
+                        </td>
+                        <td class="tdright">
+                            @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn myactionlink btn-md edit" })
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { @class = "btn myactionlink btn-md delete" })                        
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr class="secondrow trrow">
+                        <td>
+                            <span class="description cross">@Html.DisplayFor(modelItem => item.Description)</span>
+                        </td>
+
+                        <td class="tdright">
+                            @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = " btn myactionlink btn-md edit" })
+                            @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { @class = "btn myactionlink btn-md delete" })                          
+                        </td>
+                    </tr>
+                }
+            }
+
+            i++;
+        }
+    }
+
+
+</table>
+@section Scripts{
+}

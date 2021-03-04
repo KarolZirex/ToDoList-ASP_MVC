@@ -1,0 +1,22 @@
+﻿@model ToDoList.Models.ToDo
+
+<br /><br /><br /><br />
+<center>
+<h1>Na pewno?</h1>
+<br /></center>
+<div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+
+
+
+        <center><input type="submit" value="Potwierdzam" class="btn btn-lg btn-success" /></center> <br /><br /><br /><br /><br /><br /><br />
+        @Html.ActionLink("Powrót do listy", "Index", null, new { @class = "btn btn-md goback myactionlink" })
+    </div>
+    }
+</div>

@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<body class="bodyhomepage">
+
+    <br />
+    <br />
+    <br /><br />
+    <br /> <br /> <br />
+
+    <div class="jumbotron">
+        <div class="container">
+
+            @if (Request.IsAuthenticated)
+            {
+                <div class="leftJumbo">
+                    <span class="btn-primary btn-lg toTheList">@Html.ActionLink("Przejdź do swojej listy!", "../ToDoes/Index", null, new { @class = "myactionlink" }) &raquo;</span>
+                </div>
+                <div class="rightJumbo">
+                    <img src="~/images/todo.jpg" width="450" height="250" />
+                </div>
+            }
+            else
+            {
+                <div class="leftJumbo">
+                    <h1>To Do List!</h1>
+                    <p class="lead">
+                        Stwórz swoją własną listę rzeczy, które musisz zrobić <br />
+                        ...i bądź lepszą częścią siebie - Zorganizowaną!
+                    </p><br />
+                    <span class="btn-primary btn-lg register">@Html.ActionLink("Zarejestruj się", "../Account/Register", null, new { @class = "myactionlink" }) &raquo;</span>
+                    <span class="btn-primary btn-lg login">@Html.ActionLink("Zaloguj", "../Account/Login", null, new { @class = "myactionlink" }) &raquo;</span>
+                </div>
+                <div class="rightJumbo">
+                    <img src="~/images/todo.jpg" width="450" height="250" />
+                </div>
+            }
+
+        </div>
+    </div>
+</body>

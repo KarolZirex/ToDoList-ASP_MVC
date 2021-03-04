@@ -1,0 +1,126 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+
+/*home page*/
+
+.register {
+    width: 150px;
+    text-decoration: none;
+}
+
+.login {
+    width: 100px;
+    text-decoration: none;
+}
+
+.toTheList {
+    width: 300px;
+    text-decoration: none;
+    font-size: xx-large;
+}
+.bodyhomepage {
+    background-color: cornflowerblue;
+}
+
+.leftJumbo {
+    float: left;
+}
+
+.rightJumbo {
+    float: right;
+}
+
+/*actionlink*/
+.myactionlink:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.myactionlink {
+    color: white;
+    text-decoration: none;
+}
+
+/*index of todoes*/
+.edit {
+    background-color: chocolate;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.delete {
+    background-color: black;
+    font-size: medium;
+    text-decoration: none;
+}
+
+.done {
+    background-color: cornflowerblue;
+    font-size: medium;
+    text-decoration: none;
+}
+
+.add {
+    background-color: #4CAF50;
+    color: white;
+}
+
+th {
+    background-color: #4CAF50;
+    height: 50px;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.trrow {
+    height: 40px;
+    background-color: blanchedalmond;
+}
+
+.secondrow {
+    background-color: #4CAF99;
+}
+
+.description {
+    font-size: 22px;
+    font-family: Arial;
+    font-weight: normal;
+}
+
+.cross {
+    text-decoration: line-through;
+    background-color: silver;
+}
+
+.tdright {
+    text-align: right;
+}
+
+/*go back button*/
+.goback {
+    background-color: black;
+}
