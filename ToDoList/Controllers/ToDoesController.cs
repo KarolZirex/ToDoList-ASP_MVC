@@ -7,26 +7,21 @@ namespace ToDoList.Controllers
 {
     public class ToDoesController : Controller
     {
-        
         private ApplicationDbContext _db = new ApplicationDbContext();
         public IToDoesService _service { get; set; }
 
         public ToDoesController()
         {
-            _service = new ToDoesService();
+            _service = new ToDoesServiceViewModels();
         }
 
         [Authorize]
-       
         // GET: ToDoes
         public ActionResult Index()
         {
             return View(_service.GetMyToDoes(User.Identity.GetUserId()));
         }
-      
-       
-
-
+        
         // GET: ToDoes/Create
         public ActionResult Create()
         {
@@ -40,14 +35,11 @@ namespace ToDoList.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Description,IsDone")] ToDo toDo)
         {
-
-
             if (ModelState.IsValid)
             {
                 _service.AddToTheList(User.Identity.GetUserId(), toDo);
                 return RedirectToAction("Index");
             }
-
             return View(toDo);
         }
 

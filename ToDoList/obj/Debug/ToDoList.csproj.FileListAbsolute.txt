@@ -125,3 +125,12 @@ C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.dll
 C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.pdb
 C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.Migrations.ToDo1.resources
 C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.GenerateResource.cache
+C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\bin\NUnit3.TestAdapter.dll
+C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\bin\nunit.engine.dll
+C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\bin\nunit.engine.api.dll
+C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\bin\Mono.Cecil.dll
+C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\bin\Mono.Cecil.Pdb.dll
+C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\bin\Mono.Cecil.Mdb.dll
+C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\bin\Mono.Cecil.Rocks.dll
+C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\bin\nunit.framework.dll
+C:\Users\G\Desktop\ToDoList\ToDoList\ToDoList\bin\nunit.framework.xml
