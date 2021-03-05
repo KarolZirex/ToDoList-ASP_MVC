@@ -1,12 +1,5 @@
-﻿using Microsoft.Ajax.Utilities;
-using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using Microsoft.AspNet.Identity;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using ToDoList.Models;
 
@@ -14,22 +7,24 @@ namespace ToDoList.Controllers
 {
     public class ToDoesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        
+        private ApplicationDbContext _db = new ApplicationDbContext();
+        public IToDoesService _service { get; set; }
+
+        public ToDoesController()
+        {
+            _service = new ToDoesService();
+        }
 
         [Authorize]
+       
         // GET: ToDoes
         public ActionResult Index()
         {
-            return View(GetMyToDoes());
+            return View(_service.GetMyToDoes(User.Identity.GetUserId()));
         }
-        private IEnumerable<ToDo> GetMyToDoes()
-        {
-            string currentUserId = User.Identity.GetUserId();
-            ApplicationUser currentUser = db.Users.FirstOrDefault
-                (u => u.Id == currentUserId);
-            return db.ToDos.ToList().Where(x => x.User == currentUser);
-        }
-
+      
+       
 
 
         // GET: ToDoes/Create
@@ -49,12 +44,7 @@ namespace ToDoList.Controllers
 
             if (ModelState.IsValid)
             {
-                string currentUserId = User.Identity.GetUserId();
-                ApplicationUser currentUser = db.Users.FirstOrDefault(
-                    u => u.Id == currentUserId);
-                toDo.User = currentUser;
-                db.ToDos.Add(toDo);
-                db.SaveChanges();
+                _service.AddToTheList(User.Identity.GetUserId(), toDo);
                 return RedirectToAction("Index");
             }
 
@@ -68,7 +58,7 @@ namespace ToDoList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ToDo toDo = db.ToDos.Find(id);
+            ToDo toDo = _db.ToDos.Find(id);
             if (toDo == null)
             {
                 return HttpNotFound();
@@ -85,8 +75,7 @@ namespace ToDoList.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(toDo).State = EntityState.Modified;
-                db.SaveChanges();
+                _service.EditTheThingOfTheList(toDo);
                 return RedirectToAction("Index");
             }
             return View(toDo);
@@ -99,7 +88,7 @@ namespace ToDoList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ToDo toDo = db.ToDos.Find(id);
+            ToDo toDo = _db.ToDos.Find(id);
             if (toDo == null)
             {
                 return HttpNotFound();
@@ -113,9 +102,7 @@ namespace ToDoList.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ToDo toDo = db.ToDos.Find(id);
-            db.ToDos.Remove(toDo);
-            db.SaveChanges();
+            _service.DeleteFromTheList(id);
             return RedirectToAction("Index");
         }
 
@@ -127,7 +114,7 @@ namespace ToDoList.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ToDo toDo = db.ToDos.Find(id);
+            ToDo toDo = _db.ToDos.Find(id);
             if (toDo == null)
             {
                 return HttpNotFound();
@@ -141,9 +128,7 @@ namespace ToDoList.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DoneConfirmed(int id)
         {
-            ToDo toDo = db.ToDos.Find(id);
-            toDo.IsDone = true;
-            db.SaveChanges();
+            _service.DoneTheThingFromList(id);
             return RedirectToAction("Index");
         }
     }
